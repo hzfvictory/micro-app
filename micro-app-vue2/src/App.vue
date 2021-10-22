@@ -7,6 +7,7 @@
       |
       这是vue2的子应用
     </div>
+    <div style="clear: both"></div>
     <router-view />
   </div>
 </template>
@@ -35,7 +36,8 @@
   }
 
   #nav {
-    padding: 30px;
+    padding: 10px 0;
+    float: left;
   }
 
   #nav a {

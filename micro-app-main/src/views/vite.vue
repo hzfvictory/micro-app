@@ -7,6 +7,9 @@
       @mounted='mounted'
       @unmount='unmount'
       @error='error'
+      :data="{
+        token:'vite-vite-vite-vite'
+      }"
     />
   </div>
 </template>
@@ -27,12 +30,6 @@
     methods: {
       created() {
         console.log("初始化", "created");
-      },
-      beforemount() {
-        console.log("加载资源完成", "beforemount");
-      },
-      mounted() {
-        console.log("渲染结束", "mounted");
         setTimeout(() => {
           let dom = [...document.getElementsByTagName("style")];
           console.log(dom.length);
@@ -44,10 +41,17 @@
           });
         });
       },
+      beforemount() {
+        console.log("加载资源完成", "beforemount");
+      },
+      mounted() {
+        console.log("渲染结束", "mounted");
+      },
       unmount() {
         console.log("卸载", "unmount");
 
         let dom = [...document.getElementsByTagName("style")];
+        console.log(dom);
         dom.map((item) => {
           if (!item.id) {
             item.sheet.disabled = true;

@@ -1,7 +1,5 @@
 import microApp from "@micro-zoe/micro-app";
 
-console.log(microApp);
-
 microApp.start({
   plugins: {
     modules: {

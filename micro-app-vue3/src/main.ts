@@ -8,6 +8,7 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 
+/*
 const app: any = createApp(App);
 app.use(ElementPlus, {
   locale: zhCn
@@ -20,9 +21,7 @@ window.addEventListener("unmount", function() {
   // 卸载应用
   app.unmount();
 });
-
-
-/*
+*/
 
 let app: any = null;
 
@@ -42,6 +41,7 @@ function unmount() {
 declare global {
   interface Window {
     __MICRO_APP_ENVIRONMENT__: string,
+
     [key: string]: object
   }
 }
@@ -52,4 +52,3 @@ if (window.__MICRO_APP_ENVIRONMENT__) {
   mount();
 }
 
-*/

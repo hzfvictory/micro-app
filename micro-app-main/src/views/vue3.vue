@@ -1,6 +1,11 @@
 <template>
   <div>
-    <micro-app v-bind="opt" />
+    <micro-app
+      v-bind="opt"
+      :data="{
+        router:$router
+      }"
+    />
   </div>
 </template>
 
@@ -16,7 +21,7 @@
           macro: true
         }
       };
-    }
+    },
   };
 </script>
 

@@ -70,11 +70,18 @@
   </div>
 </template>
 <script>
+  import microApp from "@micro-zoe/micro-app";
+
   export default {
     data() {
       return {
         isCollapsed: false
       };
+    },
+    mounted() {
+      microApp.setGlobalData({
+        router: this.$router
+      });
     },
     computed: {
       menuitemClasses() {

@@ -5,8 +5,9 @@
     <router-link to="/about">Form</router-link>
     |
     这是 vue3 子应用
-
   </div>
+  <div style="clear: both"></div>
+
   <router-view />
 </template>
 
@@ -20,7 +21,8 @@
   }
 
   #nav {
-    padding: 30px;
+    padding: 10px 0;
+    float: left;
   }
 
   #nav a {

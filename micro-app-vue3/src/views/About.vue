@@ -1,4 +1,10 @@
 <template>
+  <el-form style="display: flex" size="small">
+    <el-button type="info" @click="getGlobalData">获取全局数据</el-button>
+    <el-button @click="jumpVue2">跳转到vue2</el-button>
+  </el-form>
+  <el-divider />
+
   <el-form
     ref="ruleForm"
     :model="ruleForm"
@@ -144,7 +150,47 @@
         }
       };
     },
+    created() {
+      console.log("默认值 ^_^ 来自基座应用的数据", window.microApp?.getData());
+      const { router } = window.microApp?.getData() || {};
+      this.router = router;
+    },
+    beforeDestroy() {
+      window.microApp?.removeGlobalDataListener(this.dataListener);
+    },
     methods: {
+      dataListener(data) {
+        console.log("全局数据", data);
+        try {
+          const { ruleForm } = data;
+          this.ruleForm = {
+            ...this.ruleForm,
+            ...ruleForm
+          };
+          this.$message({
+            message: "全局通信成功",
+            type: "success"
+          });
+        } catch (e) {
+          this.$message.error("全局通信失败");
+          console.log(e, "err");
+        }
+
+      },
+      getGlobalData() {
+        window.microApp?.addGlobalDataListener(this.dataListener, true);
+      },
+      jumpVue2() {
+        // 每个应用的路由实例都是不同的，路由实例只能控制自身，无法影响其它应用
+        // this.$router.push("/mic-vue2/about");
+
+        this.router?.push("/mic-vue2/about");
+        // window.microApp?.getData().router.push("/mic-vue2/about");
+
+        // history.pushState(null, null, "/mic-vue2/about");
+        // // 主动触发一次popstate事件
+        // window.dispatchEvent(new PopStateEvent("popstate", { state: null }));
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
