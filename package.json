@@ -1,0 +1,52 @@
+{
+  "name": "micro-ird",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel start:*",
+    "install:all": "npm-run-all --serial install:*",
+    "build": "npm-run-all --parallel build:*",
+    "upload": "npm-run-all --parallel upload:*",
+    "install:main": "cd micro-app-main && yarn",
+    "start:main": "cd micro-app-main && yarn serve",
+    "build:main": "cd micro-app-main && yarn build",
+    "upload:main": "cd micro-app-main && ./upload.sh dist",
+    "install:react": "cd micro-app-react && yarn",
+    "start:react": "cd micro-app-react && yarn serve",
+    "build:react": "cd micro-app-react && yarn build",
+    "upload:react": "cd micro-app-react && ./upload.sh build",
+    "install:vue2": "cd micro-app-vue2 && yarn",
+    "start:vue2": "cd micro-app-vue2 && yarn serve",
+    "build:vue2": "cd micro-app-vue2 && yarn build",
+    "upload:vue2": "cd micro-app-vue2 && ./upload.sh dist",
+    "install:vue3": "cd micro-app-vue3 && yarn",
+    "start:vue3": "cd micro-app-vue3 && yarn serve",
+    "build:vue3": "cd micro-app-vue3 && yarn build",
+    "upload:vue3": "cd micro-app-vue3 && ./upload.sh dist",
+    "install:vite": "cd micro-app-vite && yarn",
+    "start:vite": "cd micro-app-vite && yarn serve",
+    "build:vite": "cd micro-app-vite && yarn build",
+    "upload:vite": "cd micro-app-vite && ./upload.sh dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "@micro-zoe/micro-app": "^0.4.0",
+    "view-design": "^4.7.0-beta.10"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1"
+  }
+}

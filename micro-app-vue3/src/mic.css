@@ -1,0 +1,11 @@
+/*  mic-app 对var支持的不够 */
+/*  添加此处可能对换肤 功能有影响 建议放到子应用加载处（有变成全局的风险） */
+.el-button {
+    border: 1px solid rgb(220, 223, 230);
+}
+
+.el-checkbox__inner::after {
+    border: 1px solid #ffffff;
+    border-left: 0;
+    border-top: 0;
+}
