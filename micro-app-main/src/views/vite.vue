@@ -15,6 +15,8 @@
 </template>
 
 <script>
+  import microApp from "@micro-zoe/micro-app";
+
   export default {
     name: "",
     data() {
@@ -23,6 +25,7 @@
           name: "mic-vite",
           url: "http://localhost:9004/mic-vite/",
           inline: true, // 使用内联script模式,这个就是为了补全路径  document.getElementsByTagName('script')
+          // inline: false, // v0.4支持自动补全路径
           disableSandbox: true // 关闭沙箱
         }
       };
@@ -42,6 +45,9 @@
         });
       },
       beforemount() {
+        window.store = "12121212";  // 可以在这里引入 redux
+        window.microApp = microApp;
+
         console.log("加载资源完成", "beforemount");
       },
       mounted() {
@@ -49,6 +55,8 @@
       },
       unmount() {
         console.log("卸载", "unmount");
+        window.store = null;
+        window.microApp = null;
 
         let dom = [...document.getElementsByTagName("style")];
         console.log(dom);

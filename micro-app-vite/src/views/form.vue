@@ -83,8 +83,8 @@
         console.log("全局数据", data);
         try {
           const { ruleForm } = data;
-          this.ruleForm = {
-            ...this.ruleForm,
+          this.sizeForm = {
+            ...this.sizeForm,
             ...ruleForm
           };
           this.$message({
@@ -99,10 +99,11 @@
       },
       getGlobalData() {
         // vite 没有通信功能
-        console.log(window.microApp);
+        // console.log(window.microApp);
         window.microApp?.addGlobalDataListener(this.dataListener, true);
       },
       onSubmit() {
+        console.log(microApp);
         console.log("submit!");
       }
     }

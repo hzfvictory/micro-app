@@ -16,6 +16,7 @@
         name='vue2-2'
         url='http://localhost:9002/'
         baseRoute='/multiple'
+        :data="data"
       />
     </div>
   </div>
@@ -31,7 +32,11 @@
     },
     methods: {
       changeData() {
-        this.data = { from: "来自基座的数据" + (+new Date()) };
+        this.data = {
+          ruleForm: {
+            name: "来自基座的数据" + (+new Date())
+          }
+        };
       }
     }
   };

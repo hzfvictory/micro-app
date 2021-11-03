@@ -15,7 +15,7 @@
 <script>
   export default {
     mounted() {
-      console.log(document.querySelector("#app"));
+      console.log(document.querySelector("#app-vue2"));
 
       // console.log(document.body.querySelector("#app"));
       // console.log(new Function("return window")()); // 获取真实的window

@@ -8,19 +8,17 @@ import "element-ui/packages/theme-chalk/lib/index.css";
 Vue.config.productionTip = false;
 Vue.use(elementUI);
 
-/*
-const app = new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
-
-// 监听卸载
-window.addEventListener("unmount", function() {
-  // 卸载应用
-  app.$destroy();
-});
-*/
+// const app = new Vue({
+//   router,
+//   store,
+//   render: h => h(App)
+// }).$mount("#app");
+//
+// // 监听卸载
+// window.addEventListener("unmount", function() {
+//   // 卸载应用
+//   app.$destroy();
+// });
 
 
 let app = null;
@@ -35,6 +33,7 @@ function mount() {
 
 function unmount() {
   app.$destroy();
+  app.$el.innerHTML = '';
   app = null;
 }
 

@@ -35,6 +35,7 @@ function mount() {
 
 function unmount() {
   app.unmount();
+  app._container.innerHTML = null;
   app = null;
 }
 

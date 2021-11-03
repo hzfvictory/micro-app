@@ -12,7 +12,11 @@ app.use(ElementPlus, {
 });
 app.use(router).mount("#app-vite");
 
-
+declare global {
+  interface Window {
+    [key: string]: string
+  }
+}
 
 /*
 let app: any = null;
@@ -38,7 +42,7 @@ declare global {
   }
 }
 
-if (document.getElementById('app')) {
+if (document.getElementById('app-vite')) {
   window[`micro-app-mic-vite`] = { mount, unmount };
 } else {
   mount();
