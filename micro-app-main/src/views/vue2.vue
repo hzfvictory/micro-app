@@ -30,13 +30,12 @@
       return {
         opt: {
           name: "mic-vue2",
-          url: "http://localhost:9002",
+          url: process.env.APP_BASE_URL + "9002",
           baseroute: "/mic-vue2"
         }
       };
     },
     mounted() {
-
     },
     methods: {
       // 基座向子应用发送数据

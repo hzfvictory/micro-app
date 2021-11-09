@@ -33,7 +33,7 @@ microApp.start({
         }
       }]
     }
-  }
+  },
   // lifeCycles: {
   //   created(e) {
   //     console.log("初始化", "created");
@@ -51,9 +51,9 @@ microApp.start({
   //     console.log("error");
   //   }
   // }
+  preFetchApps: [
+    { name: "mic-react", url: `${process.env.APP_BASE_URL}9001` },
+    { name: "mic-vue2", url: `${process.env.APP_BASE_URL}9002` },
+    { name: "mic-vue3", url: `${process.env.APP_BASE_URL}9003` }
+  ]
 });
-
-microApp.preFetch(() => [
-  // { name: "mic-vue2", url: "http://localhost:9002/img/logo.png" }
-
-]);

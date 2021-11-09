@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   lintOnSave: false,  // 取消eslint
-  publicPath: 'https://cdn.jsdelivr.net/gh/hzfvictory/cdn@master/dist/',
+  // publicPath: 'https://cdn.jsdelivr.net/gh/hzfvictory/cdn@master/dist/',
   devServer: {
     // 关闭主机检查，使微应用可以被 fetch
     disableHostCheck: true,

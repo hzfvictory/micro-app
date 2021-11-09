@@ -12,11 +12,6 @@ app.use(ElementPlus, {
 });
 app.use(router).mount("#app-vite");
 
-declare global {
-  interface Window {
-    [key: string]: string
-  }
-}
 
 /*
 let app: any = null;

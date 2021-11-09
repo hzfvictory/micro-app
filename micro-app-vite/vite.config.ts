@@ -14,7 +14,7 @@ const alias: Record<string, string> = {
 // https://vitejs.dev/config/
 export default defineConfig({
   // @ts-ignore
-  base: `${process.env.NODE_ENV === "production" ? "线上地址" : ""}/mic-vite/`, // VITE_BASE_URL
+  base: `${process.env.NODE_ENV === "production" ? "http://101.42.135.167:9004" : "/mic-vite/"}`, // VITE_BASE_URL
   resolve: {
     alias
   },

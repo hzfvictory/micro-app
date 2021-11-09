@@ -1,24 +1,16 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import {BrowserRouter as Router, Switch} from "react-router-dom";
+import {renderRoutes} from "react-router-config";
+import routes from "./router";
+
+import "antd/dist/antd.css";
 
 function App() {
+  const BASE_NAME = window.__MICRO_APP_BASE_ROUTE__ || process.env.BASE_URL || "/";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename={BASE_NAME}>
+      <Switch>{renderRoutes(routes.routes)}</Switch>
+    </Router>
   );
 }
 

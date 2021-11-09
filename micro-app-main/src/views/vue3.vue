@@ -16,7 +16,7 @@
       return {
         opt: {
           name: "mic-vue3",
-          url: "http://localhost:9003/",
+          url: process.env.APP_BASE_URL + "9003",
           baseroute: "/mic-vue3",
           macro: true
         }

@@ -1,7 +1,10 @@
+import "./public-path";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { ConfigProvider } from "antd";
+import zhCN from "antd/es/locale/zh_CN";
 
 // // 监听卸载
 // window.addEventListener("unmount", function () {
@@ -12,7 +15,9 @@ import App from "./App";
 export function mount() {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <ConfigProvider autoInsertSpaceInButton={true} locale={zhCN}>
+        <App />
+      </ConfigProvider>
     </React.StrictMode>,
     document.getElementById("root")
   );

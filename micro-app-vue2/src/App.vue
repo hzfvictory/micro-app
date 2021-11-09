@@ -5,6 +5,8 @@
       |
       <router-link to="/about">Form</router-link>
       |
+      <router-link to="/list">List</router-link>
+      |
       这是vue2的子应用
     </div>
     <div style="clear: both"></div>

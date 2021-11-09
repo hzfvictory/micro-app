@@ -7,14 +7,14 @@
       <micro-app
         class='multiple-micro-app'
         name='react17-2'
-        url='http://localhost:9001/'
+        :url='APP_BASE_URL + "9001"'
         baseRoute='/multiple'
         library='micro-app-mic-react'
       />
       <micro-app
         class='multiple-micro-app'
         name='vue2-2'
-        url='http://localhost:9002/'
+        :url='APP_BASE_URL + "9002"'
         baseRoute='/multiple'
         :data="data"
       />
@@ -53,5 +53,7 @@
     flex: 1;
     margin: 0 5px;
     min-width: 200px;
+    width: 100%;
+    overflow: auto;
   }
 </style>

@@ -11,7 +11,7 @@
       return {
         opt: {
           name: "mic-react",
-          url: "http://localhost:9001/",
+          url:  process.env.APP_BASE_URL + "9001",
           baseroute: "/mic-react",
         }
       };

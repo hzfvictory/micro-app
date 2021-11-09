@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <div class="layout">
       <Layout>
         <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
@@ -36,7 +36,7 @@
         </Sider>
 
 
-        <Layout>
+        <Layout style="overflow-y: scroll; height: calc( 100vh - 0px );">
           <Header :style="{padding: 0}">
             <Menu mode="horizontal" :active-name="activeName">
               <div class="layout-nav">

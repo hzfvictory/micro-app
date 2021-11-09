@@ -23,26 +23,29 @@
       return {
         opt: {
           name: "mic-vite",
-          url: "http://localhost:9004/mic-vite/",
-          inline: true, // 使用内联script模式,这个就是为了补全路径  document.getElementsByTagName('script')
+          url: process.env.APP_BASE_URL + "9004/mic-vite/",
+          inline: process.env.NODE_ENV !== "production", // 使用内联script模式,这个就是为了补全路径  document.getElementsByTagName('script')
           // inline: false, // v0.4支持自动补全路径
-          disableSandbox: true // 关闭沙箱
+          disableSandbox: process.env.NODE_ENV !== "production"  // 关闭沙箱
         }
       };
     },
     methods: {
       created() {
         console.log("初始化", "created");
-        setTimeout(() => {
-          let dom = [...document.getElementsByTagName("style")];
-          console.log(dom.length);
-          dom.forEach((item) => {
-            if (!item.id && !item.sheet.disabled) {
-              item.id = "idd";
-            }
-            item.sheet.disabled = false;
+
+        if (process.env.NODE_ENV !== "production") {
+          setTimeout(() => {
+            let dom = [...document.getElementsByTagName("style")];
+            console.log(dom.length);
+            dom.forEach((item) => {
+              if (!item.id && !item.sheet.disabled) {
+                item.id = "idd";
+              }
+              item.sheet.disabled = false;
+            });
           });
-        });
+        }
       },
       beforemount() {
         window.store = "12121212";  // 可以在这里引入 redux
@@ -58,13 +61,15 @@
         window.store = null;
         window.microApp = null;
 
-        let dom = [...document.getElementsByTagName("style")];
-        console.log(dom);
-        dom.map((item) => {
-          if (!item.id) {
-            item.sheet.disabled = true;
-          }
-        });
+        if (process.env.NODE_ENV !== "production") {
+          let dom = [...document.getElementsByTagName("style")];
+          console.log(dom);
+          dom.map((item) => {
+            if (!item.id) {
+              item.sheet.disabled = true;
+            }
+          });
+        }
       },
       error() {
         console.log("error");

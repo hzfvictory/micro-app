@@ -396,6 +396,14 @@ module.exports = function(webpackEnv) {
                 name: "static/media/[name].[hash:8].[ext]"
               }
             },
+            {
+              test: [/\.svg$/],
+              loader: require.resolve("url-loader"),
+              options: {
+                limit: 1,
+                name: "static/media/[name].[ext]"
+              }
+            },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {

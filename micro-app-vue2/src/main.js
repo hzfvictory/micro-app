@@ -5,8 +5,21 @@ import store from "./store";
 import elementUI from "element-ui";
 import "element-ui/packages/theme-chalk/lib/index.css";
 
+import Ird from "irdd";
+import "irdd/src/styles/lib/index.css";
+
 Vue.config.productionTip = false;
 Vue.use(elementUI);
+Vue.use(Ird);
+
+//  全局的方法
+Vue.prototype.$fetch = (url, options) => {
+  return fetch(url, options)
+    .then((e) => e.json())
+    .then((val) => {
+      return val;
+    });
+};
 
 // const app = new Vue({
 //   router,
