@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/logo.png" @click="handelData">
+    {{data}}
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
@@ -10,8 +11,23 @@
 
   export default {
     name: "Home",
+    data() {
+      return {
+        data: {
+          test: 1
+        }
+      };
+    },
     components: {
       HelloWorld
+    },
+    methods: {
+      handelData() {
+        // this.$set(this.data, "aa", 2222);
+        this.data.aa = 2222;
+        console.log(this.data);
+
+      }
     }
   };
 </script>

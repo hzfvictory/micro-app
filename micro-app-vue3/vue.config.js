@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   lintOnSave: false,  // 取消eslint
+  // publicPath: "https://cdn.jsdelivr.net/gh/hzfvictory/cdn@master/micro/vue3/dist/", // 做区分 打开这个需要提前做CDN
   devServer: {
     disableHostCheck: true,
     headers: {

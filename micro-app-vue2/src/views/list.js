@@ -18,11 +18,15 @@ export default {
         // table的列
         {
           label: "id",
-          prop: "id"
+          prop: "id",
+          'min-width':100,
+          "show-overflow-tooltip": true,
         },
         {
           label: "名称",
           prop: "name",
+          'min-width':130,
+          "show-overflow-tooltip": true,
           render: (text) => {
             return <a>{text}</a>;
           }
@@ -36,7 +40,8 @@ export default {
         },
         {
           label: "时间",
-          prop: "created_date"
+          prop: "created_date",
+          'min-width':100,
         },
         {
           label: "状态",

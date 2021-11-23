@@ -1,36 +1,36 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <div class="layout">
       <Layout>
         <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-          <div class="layout-logo">
+          <div class="layout-logo" @click="jumpHome">
             <div></div>
           </div>
 
           <Menu theme="dark" :active-name="activeName" :class="menuitemClasses" width="auto">
             <MenuItem name="home" to="/">
-              <Icon type="md-boat" />
-              <span>自带页面</span>
+              <Icon type="md-desktop" />
+              <p>self 应用</p>
             </MenuItem>
             <MenuItem name="mic-react" to="/mic-react/">
-              <Icon type="md-boat" />
-              <span>react17</span>
+              <Icon type="md-compass" />
+              <p>react17 应用</p>
             </MenuItem>
             <MenuItem name="mic-vue2" to="/mic-vue2/about">
-              <Icon type="md-book" />
-              <span>vue2</span>
+              <Icon type="logo-javascript" />
+              <p>vue2 应用</p>
             </MenuItem>
             <MenuItem name="mic-vue3" to="/mic-vue3/about">
-              <Icon type="logo-buffer" />
-              <span>vue3</span>
+              <Icon type="ios-nuclear" />
+              <p>vue3 应用</p>
             </MenuItem>
             <MenuItem name="mic-vite" to="/mic-vite/#/form">
-              <Icon type="logo-buffer" />
-              <span>vite</span>
+              <Icon type="ios-paper-plane" />
+              <p>vite 应用</p>
             </MenuItem>
             <MenuItem name="multiple" to="/multiple/">
-              <Icon type="logo-buffer" />
-              <span>多个应用</span>
+              <Icon type="md-cube" />
+              <p>多实例 应用</p>
             </MenuItem>
           </Menu>
         </Sider>
@@ -38,23 +38,26 @@
 
         <Layout style="overflow-y: scroll; height: calc( 100vh - 0px );">
           <Header :style="{padding: 0}">
-            <Menu mode="horizontal" :active-name="activeName">
+            <Menu mode="horizontal" :active-name="activeName" style="display: flex">
+              <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px',lineHeight:'60px'}"
+                    type="md-menu"
+                    size="24" />
               <div class="layout-nav">
                 <MenuItem name="mic-react" to="/mic-react/">
-                  <Icon type="ios-navigate"></Icon>
-                  速看
+                  <Icon type="logo-facebook" />
+                  预渲染
                 </MenuItem>
                 <MenuItem name="mic-vue2" to="/mic-vue2/about">
-                  <Icon type="ios-keypad"></Icon>
-                  尽阅
+                  <Icon type="logo-hackernews" />
+                  预渲染+CDN
                 </MenuItem>
                 <MenuItem name="mic-vue3" to="/mic-vue3/about">
-                  <Icon type="ios-analytics"></Icon>
-                  oppo
+                  <Icon type="logo-foursquare" />
+                  CDN
                 </MenuItem>
                 <MenuItem name="mic-vite" to="/mic-vite/about">
-                  <Icon type="ios-paper"></Icon>
-                  vivo
+                  <Icon type="logo-google" />
+                  正常
                 </MenuItem>
               </div>
             </Menu>
@@ -75,7 +78,7 @@
   export default {
     data() {
       return {
-        isCollapsed: false
+        isCollapsed: JSON.parse(localStorage.getItem("menu-collapsed")) || false
       };
     },
     mounted() {
@@ -84,6 +87,12 @@
       });
     },
     computed: {
+      rotateIcon() {
+        return [
+          "menu-icon",
+          this.isCollapsed ? "rotate-icon" : ""
+        ];
+      },
       menuitemClasses() {
         return [
           "menu-item",
@@ -95,7 +104,16 @@
         return path.split("/")[1] || "home";
       }
     },
-    methods: {}
+    methods: {
+      collapsedSider() {
+        this.$refs.side1.toggleCollapse();
+        localStorage.setItem("menu-collapsed", this.isCollapsed);
+
+      },
+      jumpHome() {
+        this.$router.push("/");
+      }
+    }
   };
 </script>
 
@@ -127,10 +145,10 @@
     transform: rotate(-90deg);
   }
 
-  .menu-item span {
+  .menu-item p {
     display: inline-block;
     overflow: hidden;
-    width: 69px;
+    width: calc(100% - 30px);
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: bottom;
@@ -138,31 +156,33 @@
   }
 
   .menu-item i {
-    transform: translateX(0px);
+    transform: translateX(-5px);
     transition: font-size .2s ease, transform .2s ease;
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 18px;
   }
 
-  .collapsed-menu span {
+
+  .collapsed-menu p {
     width: 0px;
     transition: width .2s ease;
   }
 
-  .collapsed-menu i {
+  .menu-item.collapsed-menu i {
     transform: translateX(5px);
     transition: font-size .2s ease .2s, transform .2s ease .2s;
     vertical-align: middle;
-    font-size: 22px;
+    font-size: 19px;
   }
 
   .layout-logo {
     width: 100%;
     height: 60px;
+    cursor: pointer;
   }
 
   .layout-logo > div {
-    width: 100px;
+    width: 110px;
     height: 30px;
     background: #5b6270;
     border-radius: 3px;
@@ -172,8 +192,12 @@
     left: 20px;
   }
 
+  .ivu-layout-sider-collapsed .layout-logo > div {
+    width: 40px;
+  }
+
   .layout-nav {
-    width: 380px;
+    width: 480px;
     margin: 0 auto;
     margin-right: 0;
   }
